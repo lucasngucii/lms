@@ -2,6 +2,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { LoggerMiddleware } from './middlewares/Logger.middleware';
+import { PostgresDatabaseModule } from './common/databases/postgres/postgres.database';
 
 @Module({
    imports: [
@@ -17,6 +18,7 @@ import { LoggerMiddleware } from './middlewares/Logger.middleware';
             abortEarly: true,
          },
       }),
+      PostgresDatabaseModule,
    ],
    controllers: [],
    providers: [],
