@@ -19,14 +19,12 @@ services:
 
 
   postgres:
-    image: postgres:16
+    image: postgres
     container_name: postgres
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin123
-      POSTGRES_DB: lmscourse
-    ports:
-      - "5433:5433"
+      POSTGRES_DB: lms-course
     volumes:
       - postgres_data:/var/lib/postgresql/data
 volumes:
