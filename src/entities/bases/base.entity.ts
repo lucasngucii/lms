@@ -6,9 +6,9 @@ export class BaseEntity<T> implements IBaseEntity {
    id: string;
 
    @CreateDateColumn({ type: 'timestamptz' })
-   createDateTime: Date;
+   createAt: Date;
    @CreateDateColumn({ type: 'timestamptz' })
-   lastChangedDateTime: Date;
+   updateAt: Date;
 
    @Column({ type: 'varchar', default: '' })
    createBy: string;

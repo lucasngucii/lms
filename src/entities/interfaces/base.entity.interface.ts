@@ -1,7 +1,7 @@
 export interface IBaseEntity {
    id: string;
-   createDateTime: Date;
-   lastChangedDateTime: Date;
+   createAt: Date;
+   updateAt: Date;
    isActive: boolean;
    isArchived: boolean;
    createBy: string;
