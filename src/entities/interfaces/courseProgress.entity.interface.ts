@@ -5,4 +5,5 @@ export interface ICourseProgress extends IBaseEntity {
    completedQuizzes: boolean;
    progressPercentage: number;
    lastAccessedAt: Date;
+
 }
