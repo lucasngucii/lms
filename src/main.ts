@@ -30,7 +30,7 @@ async function bootstrap() {
    const configService = app.get(ConfigService);
    const port = configService.get<string>('PORT') || 3000;
    await app.listen(port, () => {
-      console.log('Listening at http://localhost:' + port + '/' + globalPrefix);
+      console.log('Listening at http://devbulls.us.local2');
    });
 
 }
