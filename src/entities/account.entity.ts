@@ -48,6 +48,9 @@ export class AccountEntity extends BaseEntity<AccountEntity> implements IAccount
    @JoinTable()
    keyToken: KeyTokenEntity[];
 
+  /* The `@OneToMany(() => LoginHistoryEntity, (history) => history.account)` decorator in the
+  `AccountEntity` class is defining a one-to-many relationship between the `AccountEntity` and
+  `LoginHistoryEntity`. */
    @OneToMany(() => LoginHistoryEntity, (history) => history.account)
    loginHistory: LoginHistoryEntity[];
 
