@@ -10,7 +10,9 @@ import {
    CourseModuleEntity,
    CourseLessionEntity,
 } from './courses';
+import { AssignmentEntity } from './courses/assignment.entity';
 import { ReviewEntity } from './courses/review.entity';
+import { SubmissionEntity } from './courses/submission.entity';
 
 export const entities = [
    AccountEntity,
@@ -28,4 +30,6 @@ export const entities = [
    CourseModuleEntity,
    CourseLessionEntity,
    ReviewEntity,
+   AssignmentEntity,
+   SubmissionEntity,
 ];
