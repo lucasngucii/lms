@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany } from 'typeorm'
 import { BaseEntity } from '../bases';
 import { ICourseProgress } from '../interfaces';
 import { CourseEntity } from '../courses/course.entity';
-import { AccountEntity } from '../account.entity';
+import { AccountEntity } from '../accounts/account.entity';
 import { ProgresDetailsEntity } from './progresDetail.entity';
 
 
