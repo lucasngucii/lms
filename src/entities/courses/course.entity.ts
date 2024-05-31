@@ -1,13 +1,14 @@
 import { Column, Entity, Index, JoinTable, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
 import { BaseEntity } from '../bases';
 import { ICourse } from '../interfaces';
-import { EnrollmentEntity } from '../enrollment.entity';
-import { AccountEntity } from '../account.entity';
+
+import { AccountEntity } from '../accounts/account.entity';
 
 import { CourseContentEntity } from './content.entity';
 import { CourseModuleEntity } from './module.entity';
 import { CategoryEntity } from './category.entity';
 import { CourseProgressEntity } from './progres.entity';
+import { EnrollmentEntity } from './enrollment.entity';
 
 @Entity({ name: 'course' })
 export class CourseEntity extends BaseEntity<CourseEntity> implements ICourse {
