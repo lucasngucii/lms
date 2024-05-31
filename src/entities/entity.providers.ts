@@ -1,4 +1,5 @@
 import { AccountEntity } from './account.entity';
+import { CategoryEntity } from './category.entity';
 import { CourseEntity } from './course.entity';
 import { DetailAccountEntity } from './detailAccount.entity';
 import { EnrollmentEntity } from './enrollment.entity';
@@ -16,4 +17,5 @@ export const entities = [
    DetailAccountEntity,
    EnrollmentEntity,
    CourseEntity,
+   CategoryEntity,
 ];
