@@ -30,4 +30,5 @@ export class CourseProgressEntity
 
    @OneToMany(() => ProgresDetailsEntity,  progres => progres.progres)
    details: ProgresDetailsEntity[];
+   
 }
