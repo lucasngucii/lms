@@ -4,6 +4,7 @@ import { ICourse } from './interfaces';
 import { EnrollmentEntity } from './enrollment.entity';
 import { AccountEntity } from './account.entity';
 import { CategoryEntity } from './category.entity';
+import { CourseProgressEntity } from './progres.entity';
 
 @Entity({ name: 'course' })
 export class CourseEntity extends BaseEntity<CourseEntity> implements ICourse {
@@ -41,4 +42,7 @@ export class CourseEntity extends BaseEntity<CourseEntity> implements ICourse {
    @ManyToMany(() => CategoryEntity, { cascade: true })
    @JoinTable()
    categories: CategoryEntity[];
+
+   @OneToMany(() => CourseProgressEntity, (progres) => progres.course)
+   progress: CourseProgressEntity;
 }
