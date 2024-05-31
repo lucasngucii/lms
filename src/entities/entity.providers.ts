@@ -5,6 +5,8 @@ import { DetailAccountEntity } from './detailAccount.entity';
 import { EnrollmentEntity } from './enrollment.entity';
 import { KeyTokenEntity } from './keyToken.entity';
 import { LoginHistoryEntity } from './loginHistory.entity';
+import { CourseProgressEntity } from './progres.entity';
+import { ProgresDetailsEntity } from './progresDetail.entity';
 import { RoleEntity } from './role.entity';
 import { SessionEntity } from './session.entity';
 
@@ -18,4 +20,6 @@ export const entities = [
    EnrollmentEntity,
    CourseEntity,
    CategoryEntity,
+   CourseProgressEntity,
+   ProgresDetailsEntity,
 ];
