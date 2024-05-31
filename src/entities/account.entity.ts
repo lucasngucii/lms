@@ -67,4 +67,6 @@ export class AccountEntity extends BaseEntity<AccountEntity> implements IAccount
 
    @OneToMany(() => CourseProgressEntity, (progres) => progres.course)
    progress: CourseProgressEntity[];
+
+   
 }
