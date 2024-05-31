@@ -5,3 +5,4 @@ export * from './enrollment.entity';
 export * from './progres.entity';
 export * from './progresDetail.entity';
 export * from './module.entity';
+export * from './lession.entity';
