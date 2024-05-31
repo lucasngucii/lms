@@ -13,6 +13,7 @@ import { IAccountEntity } from '../interfaces';
 import { KeyTokenEntity, LoginHistoryEntity, SessionEntity, RoleEntity } from '../auth';
 import { DetailAccountEntity } from './detailAccount.entity';
 import { CourseEntity, CourseProgressEntity, EnrollmentEntity } from '../courses';
+import { ReviewEntity } from '../courses/review.entity';
 
 @Entity({ name: 'account' })
 export class AccountEntity extends BaseEntity<AccountEntity> implements IAccountEntity {
@@ -62,4 +63,7 @@ export class AccountEntity extends BaseEntity<AccountEntity> implements IAccount
 
    @OneToMany(() => CourseProgressEntity, (progres) => progres.course)
    progress: CourseProgressEntity[];
+
+   @OneToMany(() => ReviewEntity, (review) => review.account)
+   review: ReviewEntity[];
 }
