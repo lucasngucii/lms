@@ -9,6 +9,7 @@ import { CourseModuleEntity } from './module.entity';
 import { CategoryEntity } from './category.entity';
 import { CourseProgressEntity } from './progres.entity';
 import { EnrollmentEntity } from './enrollment.entity';
+import { ReviewEntity } from './review.entity';
 
 @Entity({ name: 'course' })
 export class CourseEntity extends BaseEntity<CourseEntity> implements ICourse {
@@ -55,4 +56,7 @@ export class CourseEntity extends BaseEntity<CourseEntity> implements ICourse {
 
    @OneToMany(() => CourseModuleEntity, (module) => module.course)
    modules: CourseModuleEntity[];
+
+   @OneToMany(() => ReviewEntity, (review) => review.course)
+   reviews: ReviewEntity[];
 }
