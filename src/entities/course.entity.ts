@@ -5,6 +5,7 @@ import { EnrollmentEntity } from './enrollment.entity';
 import { AccountEntity } from './account.entity';
 import { CategoryEntity } from './category.entity';
 import { CourseProgressEntity } from './progres.entity';
+import { CourseContentEntity } from './content.entity';
 
 @Entity({ name: 'course' })
 export class CourseEntity extends BaseEntity<CourseEntity> implements ICourse {
@@ -45,4 +46,7 @@ export class CourseEntity extends BaseEntity<CourseEntity> implements ICourse {
 
    @OneToMany(() => CourseProgressEntity, (progres) => progres.course)
    progress: CourseProgressEntity;
+
+   @OneToMany(() => CourseContentEntity, (content) => content.course)
+   contents: CourseContentEntity[];
 }
