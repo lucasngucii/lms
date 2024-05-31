@@ -10,7 +10,7 @@ import {
    CourseModuleEntity,
    CourseLessionEntity,
 } from './courses';
-
+import { ReviewEntity } from './courses/review.entity';
 
 export const entities = [
    AccountEntity,
@@ -27,4 +27,5 @@ export const entities = [
    CourseContentEntity,
    CourseModuleEntity,
    CourseLessionEntity,
+   ReviewEntity,
 ];
