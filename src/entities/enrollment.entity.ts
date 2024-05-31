@@ -2,7 +2,7 @@ import { CreateDateColumn, Entity, ManyToOne } from 'typeorm';
 import { BaseEntity } from './bases';
 import { IEnrollmentEntity } from './interfaces';
 import { AccountEntity } from './account.entity';
-import { CourseEntity } from './course.entity';
+import { CourseEntity } from './courses/course.entity';
 
 @Entity({ name: 'enrollment' })
 export class EnrollmentEntity extends BaseEntity<EnrollmentEntity> implements IEnrollmentEntity {
