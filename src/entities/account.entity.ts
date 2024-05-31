@@ -16,8 +16,9 @@ import { KeyTokenEntity } from './keyToken.entity';
 import { LoginHistoryEntity } from './loginHistory.entity';
 import { DetailAccountEntity } from './detailAccount.entity';
 import { EnrollmentEntity } from './enrollment.entity';
-import { CourseEntity } from './course.entity';
-import { CourseProgressEntity } from './progres.entity';
+import { CourseEntity } from './courses/course.entity';
+import { CourseProgressEntity } from './courses/progres.entity';
+
 
 @Entity({ name: 'account' })
 export class AccountEntity extends BaseEntity<AccountEntity> implements IAccountEntity {
@@ -68,5 +69,5 @@ export class AccountEntity extends BaseEntity<AccountEntity> implements IAccount
    @OneToMany(() => CourseProgressEntity, (progres) => progres.course)
    progress: CourseProgressEntity[];
 
-   
+
 }
