@@ -17,6 +17,7 @@ import { LoginHistoryEntity } from './loginHistory.entity';
 import { DetailAccountEntity } from './detailAccount.entity';
 import { EnrollmentEntity } from './enrollment.entity';
 import { CourseEntity } from './course.entity';
+import { CourseProgressEntity } from './progres.entity';
 
 @Entity({ name: 'account' })
 export class AccountEntity extends BaseEntity<AccountEntity> implements IAccountEntity {
@@ -48,7 +49,7 @@ export class AccountEntity extends BaseEntity<AccountEntity> implements IAccount
    @JoinTable()
    keyToken: KeyTokenEntity[];
 
-  /* The `@OneToMany(() => LoginHistoryEntity, (history) => history.account)` decorator in the
+   /* The `@OneToMany(() => LoginHistoryEntity, (history) => history.account)` decorator in the
   `AccountEntity` class is defining a one-to-many relationship between the `AccountEntity` and
   `LoginHistoryEntity`. */
    @OneToMany(() => LoginHistoryEntity, (history) => history.account)
@@ -61,7 +62,9 @@ export class AccountEntity extends BaseEntity<AccountEntity> implements IAccount
    @OneToMany(() => EnrollmentEntity, (enrollment) => enrollment.account)
    enrollments: EnrollmentEntity[];
 
-   @OneToMany(()=> CourseEntity,  course => course.instructor)
+   @OneToMany(() => CourseEntity, (course) => course.instructor)
    courses: CourseEntity[];
 
+   @OneToMany(() => CourseProgressEntity, (progres) => progres.course)
+   progress: CourseProgressEntity[];
 }
