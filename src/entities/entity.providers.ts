@@ -1,5 +1,6 @@
 import { AccountEntity } from './account.entity';
 import { CategoryEntity } from './category.entity';
+import { CourseContentEntity } from './content.entity';
 import { CourseEntity } from './course.entity';
 import { DetailAccountEntity } from './detailAccount.entity';
 import { EnrollmentEntity } from './enrollment.entity';
@@ -22,4 +23,5 @@ export const entities = [
    CategoryEntity,
    CourseProgressEntity,
    ProgresDetailsEntity,
+   CourseContentEntity,
 ];
