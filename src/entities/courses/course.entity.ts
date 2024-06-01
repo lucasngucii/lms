@@ -12,6 +12,7 @@ import { EnrollmentEntity } from './enrollment.entity';
 import { ReviewEntity } from './review.entity';
 import { AssignmentEntity } from './assignment.entity';
 import { QuizQuestionEntity } from './question.entity';
+import { InteractionEntity } from './interaction.entity';
 
 @Entity({ name: 'course' })
 export class CourseEntity extends BaseEntity<CourseEntity> implements ICourse {
@@ -67,4 +68,7 @@ export class CourseEntity extends BaseEntity<CourseEntity> implements ICourse {
 
    @OneToMany(() => QuizQuestionEntity, (quiz) => quiz.course)
    quiz: QuizQuestionEntity[];
+
+   @ManyToOne(() => InteractionEntity, (interaction) => interaction.course)
+   interaction: InteractionEntity;
 }
