@@ -17,6 +17,7 @@ import {
    CouponEntity,
    TagEntity,
 } from './courses';
+import { InteractionEntity } from './courses/interaction.entity';
 
 export const entities = [
    AccountEntity,
@@ -40,4 +41,5 @@ export const entities = [
    CertificateEntity,
    CouponEntity,
    TagEntity,
+   InteractionEntity,
 ];
