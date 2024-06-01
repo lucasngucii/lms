@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
+import helmet from 'helmet';
 
 async function bootstrap() {
    const app = await NestFactory.create(AppModule);
@@ -13,6 +14,7 @@ async function bootstrap() {
       }),
    );
 
+   app.use(helmet());
    const globalPrefix = 'api';
    app.setGlobalPrefix(globalPrefix);
 
@@ -32,7 +34,6 @@ async function bootstrap() {
    await app.listen(port, () => {
       console.log('Listening at http://devbulls.us.local2');
    });
-
 }
 
 bootstrap();
