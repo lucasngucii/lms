@@ -14,6 +14,7 @@ import { KeyTokenEntity, LoginHistoryEntity, SessionEntity, RoleEntity } from '.
 import { DetailAccountEntity } from './detailAccount.entity';
 import { CourseEntity, CourseProgressEntity, EnrollmentEntity } from '../courses';
 import { ReviewEntity } from '../courses/review.entity';
+import { CertificateEntity } from '../courses/certificate.entity';
 
 @Entity({ name: 'account' })
 export class AccountEntity extends BaseEntity<AccountEntity> implements IAccountEntity {
@@ -66,4 +67,7 @@ export class AccountEntity extends BaseEntity<AccountEntity> implements IAccount
 
    @OneToMany(() => ReviewEntity, (review) => review.account)
    review: ReviewEntity[];
+
+   @OneToMany(() => CertificateEntity, (certificate) => certificate.account)
+   certificate: CertificateEntity[];
 }
