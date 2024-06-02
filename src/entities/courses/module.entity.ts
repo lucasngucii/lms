@@ -2,7 +2,7 @@ import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 import { BaseEntity } from '../bases';
 import { IModuleEntity } from '../interfaces';
 import { CourseEntity } from './course.entity';
-import { CourseLessionEntity } from './lesson.entity';
+import { CourseLessonEntity } from './lesson.entity';
 
 @Entity({ name: 'course_module' })
 export class CourseModuleEntity extends BaseEntity<CourseModuleEntity> implements IModuleEntity {
@@ -24,6 +24,6 @@ export class CourseModuleEntity extends BaseEntity<CourseModuleEntity> implement
    @ManyToOne(() => CourseEntity, (course) => course.modules)
    course: CourseEntity;
 
-   @OneToMany(() => CourseLessionEntity, (lession) => lession.module)
-   lessions: CourseLessionEntity[];
+   @OneToMany(() => CourseLessonEntity, (lession) => lession.module)
+   lessions: CourseLessonEntity[];
 }
