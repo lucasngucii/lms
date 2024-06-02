@@ -15,7 +15,7 @@ async function bootstrap() {
    );
 
    app.use(helmet());
-   
+
    const globalPrefix = 'api';
    app.setGlobalPrefix(globalPrefix);
 
