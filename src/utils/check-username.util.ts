@@ -1,16 +1,13 @@
 import { CustomException } from 'src/common/exceptions';
 
-const containsSpecialCharacters = (str) => {
-   const regex = /[!@#$%^&*(),.?":{}|<>]/;
-   return regex.test(str);
-};
-
-const checkUsername = (phoneNumber) => {
+const checkUsername = (username: string): boolean => {
    try {
-      if (containsSpecialCharacters(phoneNumber)) {
-         throw new CustomException('Phone number cannot contain special characters');
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const isEmail = emailRegex.test(username);
+      if (isEmail) {
+         return true;
       }
-      return true;
+      return false;
    } catch (error) {
       throw new CustomException(error.message);
    }
