@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AccountEntity } from 'src/entities/accounts';
 import { CacheModule } from '@nestjs/cache-manager';
 import { MailModule } from './mail/mail.module';
+import { KeytokenModule } from './keytoken/keytoken.module';
 
 @Module({
    imports: [
@@ -16,6 +17,7 @@ import { MailModule } from './mail/mail.module';
          isGlobal: true,
       }),
       MailModule,
+      KeytokenModule,
    ],
    providers: [AuthService],
    controllers: [AuthController],
