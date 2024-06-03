@@ -55,8 +55,8 @@ export class AuthService {
             }
             return await this.transactionLoginAccount(loginDto, foundAccount);
          }
-      } catch (e) {
-         throw new CustomException('', HttpCode.INTERNAL_SERVER_ERROR, e);
+      } catch (err) {
+         throw new CustomException('', HttpCode.INTERNAL_SERVER_ERROR, err);
       }
    }
 
@@ -71,7 +71,7 @@ export class AuthService {
          const checkPassword = bcrypt.compareSync(loginDto.password, account.password);
          if (checkPassword) {
             // update last login
-            
+
             return {
                success: true,
                message: 'Login success',
