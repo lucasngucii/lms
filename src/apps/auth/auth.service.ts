@@ -11,27 +11,117 @@ import checkUsername from 'src/utils/check-username.util';
 import { AccountEntity } from 'src/entities/accounts';
 import { AccountRepository } from 'src/repositories/accounts';
 import { setExpireAt } from '../../utils/setExpire.util';
+import { validateUsername } from '../../utils/validate-username.util';
+import { LoginDto } from './dtos/login.dto';
 
 @Injectable()
 export class AuthService {
    constructor(
       @InjectRepository(AccountEntity) private readonly accountRepository: AccountRepository,
       private readonly entityManager: EntityManager,
-   ) {
-   }
-
+   ) {}
 
    public async register(registerDto: RegisterDto): Promise<MessageResponse> {
-      checkUsername(registerDto.username);
+      // check username is valid
+      !validateUsername(registerDto.username);
       return await this.createAccount(registerDto);
+   }
+
+   public async login(loginDto: LoginDto): Promise<MessageResponse> {
+      try {
+         // validate username
+         !validateUsername(loginDto.username);
+         // check username is mail or not
+         const checkUsernameResult = checkUsername(loginDto.username);
+
+         if (checkUsernameResult) {
+            const foundAccount = await this.findAccountByEmail(loginDto.username);
+            if (!foundAccount) {
+               return {
+                  success: false,
+                  message: 'Account not found',
+                  data: {},
+               };
+            }
+            return await this.transactionLoginAccount(loginDto, foundAccount);
+         } else {
+            const foundAccount = await this.findAccountByUsername(loginDto.username);
+            if (!foundAccount) {
+               return {
+                  success: false,
+                  message: 'Account not found',
+                  data: {},
+               };
+            }
+            return await this.transactionLoginAccount(loginDto, foundAccount);
+         }
+      } catch (e) {
+         throw new CustomException('', HttpCode.INTERNAL_SERVER_ERROR, e);
+      }
+   }
+
+   // --------------------------------------------------------------------------------------------------
+
+   private async transactionLoginAccount(
+      loginDto: LoginDto,
+      account: AccountEntity,
+   ): Promise<MessageResponse> {
+      try {
+         // check password
+         const checkPassword = bcrypt.compareSync(loginDto.password, account.password);
+         if (checkPassword) {
+            // update last login
+            
+            return {
+               success: true,
+               message: 'Login success',
+               data: {
+                  username: account.username,
+                  email: account.email,
+               },
+            };
+         }
+         return {
+            success: false,
+            message: 'Password is incorrect',
+            data: {},
+         };
+      } catch (error) {
+         throw new CustomException('', HttpCode.INTERNAL_SERVER_ERROR, error);
+      }
    }
 
    private async findAccountByUsername(username: string): Promise<AccountEntity> {
       try {
-         const foundAccount = await this.accountRepository.findOne({
+         return await this.accountRepository.findOne({
             where: { username: username },
+            select: {
+               id: true,
+               username: true,
+               password: true,
+               email: true,
+               isVerified: true,
+            },
          });
-         return foundAccount;
+      } catch (error) {
+         throw new CustomException('', HttpCode.NOT_IMPLEMENTED, error);
+      }
+   }
+
+   private async findAccountByEmail(email: string): Promise<AccountEntity> {
+      try {
+         return await this.accountRepository.findOne({
+            where: {
+               email: email,
+            },
+            select: {
+               id: true,
+               username: true,
+               password: true,
+               email: true,
+               isVerified: true,
+            },
+         });
       } catch (error) {
          throw new CustomException('', HttpCode.NOT_IMPLEMENTED, error);
       }
