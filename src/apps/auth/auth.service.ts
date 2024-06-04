@@ -1,9 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Response } from 'express';
 import { EntityManager } from 'typeorm';
-import { HttpCode } from 'src/constants';
 import { CustomException } from 'src/common';
 import { MessageResponse } from 'src/common/responses';
 import { RegisterDto } from './dtos';
@@ -56,7 +55,7 @@ export class AuthService {
             return await this.transactionLoginAccount(loginDto, foundAccount);
          }
       } catch (err) {
-         throw new CustomException('', HttpCode.INTERNAL_SERVER_ERROR, err);
+         throw new CustomException('', HttpStatus.OK, err);
       }
    }
 
@@ -87,7 +86,7 @@ export class AuthService {
             data: {},
          };
       } catch (error) {
-         throw new CustomException('', HttpCode.INTERNAL_SERVER_ERROR, error);
+         throw new CustomException('', HttpStatus.INTERNAL_SERVER_ERROR, error);
       }
    }
 
@@ -104,7 +103,7 @@ export class AuthService {
             },
          });
       } catch (error) {
-         throw new CustomException('', HttpCode.NOT_IMPLEMENTED, error);
+         throw new CustomException('', HttpStatus.INTERNAL_SERVER_ERROR, error);
       }
    }
 
@@ -123,7 +122,7 @@ export class AuthService {
             },
          });
       } catch (error) {
-         throw new CustomException('', HttpCode.NOT_IMPLEMENTED, error);
+         throw new CustomException('', HttpStatus.INTERNAL_SERVER_ERROR, error);
       }
    }
 
