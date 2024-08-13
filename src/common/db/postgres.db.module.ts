@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as Joi from 'joi';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { entities } from 'src/entities';
 @Module({
    imports: [
       ConfigModule.forRoot({
@@ -24,7 +25,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
             database: configService.getOrThrow('POSTGRES_DB'),
             autoLoadEntities: true,
             synchronize: true,
-            // entities: entities,
+            entities: entities,
          }),
          inject: [ConfigService],
       }),
