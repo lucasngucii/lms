@@ -8,10 +8,10 @@ export interface IAccountEntity extends IBaseEntity {
    isVerified: boolean;
    lastLogin: Date;
 
-   fullName?: string;
-   birthDate?: Date;
-   gender?: EGender;
-   avatar?: string;
-   phone?: string;
-   bio?: string;
+   fullName: string;
+   birthDate: Date;
+   gender: EGender;
+   avatar: string;
+   phone: string;
+   bio: string;
 }

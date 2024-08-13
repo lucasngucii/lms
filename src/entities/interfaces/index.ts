@@ -22,3 +22,4 @@ export * from './quiz-question.entity.interface';
 export * from './review.entity.interface';
 export * from './lesson-test.entity.interface';
 export * from './type-upload.entity.interface';
+export * from './key-token.entity.interface';
