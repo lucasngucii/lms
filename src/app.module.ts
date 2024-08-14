@@ -5,7 +5,8 @@ import * as Joi from 'joi';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { BullModule } from '@nestjs/bull';
 import { CacheModule } from '@nestjs/cache-manager';
-import { PostgresDbModule } from './common';
+import { PostgresDbModule, CustomLoggerModule } from './common';
+
 @Module({
    imports: [
       ConfigModule.forRoot({
@@ -43,7 +44,7 @@ import { PostgresDbModule } from './common';
          }),
          inject: [ConfigService],
       }),
-
+      CustomLoggerModule,
       PostgresDbModule,
    ],
 })
